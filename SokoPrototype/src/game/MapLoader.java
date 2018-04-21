@@ -10,15 +10,41 @@ public class MapLoader {
 	private int x, y;
 	private List<Field> fields = new LinkedList<Field>();
 	private List<Switch> switches = new LinkedList<Switch>();
-	private List<Integer> connectedTD = new LinkedList<Integer>();
+	private List<Integer> trapdoorIdx = new LinkedList<Integer>();
 	private List<Player> players = new LinkedList<Player>();
-	
-	
-	public MapLoader(InputStream is) {
-		sc = new Scanner(is);
+		
+	public List<Player> getPlayers() {
+		return players;
 	}
-	
-	public Field[][] Load(){
+		
+	public Field[][] getFields() {
+		Field[][] f = new Field[y][x];
+		// x*y grid
+		for(int i=0; i<y; ++i) {
+			for(int j=0; j<x; ++j) {
+				f[i][j] = fields.get(i*x+j);
+			}
+		}
+		
+		//TODO
+		for(int i=0; i< y; i++) {
+			for(int j =0; j< x-1; j++) {
+				Field.ConnectHorizontal(f[i][j], f[i][j+1]);				
+			}		
+		}
+		
+		for(int i=0; i< y-1; i++) {
+			for(int j =0; j< x; j++) {
+				Field.ConnectVertical(f[i][j], f[i+1][j]);				
+			}		
+		}
+				
+		return f;
+	}
+
+	public void Load(InputStream is){
+		sc = new Scanner(is);
+		
 		x = Integer.parseInt(sc.nextLine());
 		y = Integer.parseInt(sc.nextLine());
 		
@@ -27,26 +53,32 @@ public class MapLoader {
 		}
 		
 		for(int i=0; i<switches.size(); ++i) {
-			switches.get(i).setTd( (TrapDoor) fields.get(connectedTD.get(i)));
+			switches.get(i).setTd( (TrapDoor) fields.get(trapdoorIdx.get(i)));
 		}
 		
-		//TODO
-		return null;
-		
+		while(sc.hasNext()) {
+			CreateThing(sc.nextLine());
+		}
 	}
-	
-	
-	private Thing CreateThing(String line) {
+		
+	private void CreateThing(String line) {
 		String[] parts = line.split(" ");
-		//TODO
+		
 		switch(parts[0]) {
-			case "p":				
+			case "p":
+				Player p = new Player();
+				p.setField(fields.get(Integer.parseInt(parts[1])));
+				p.setStrength(Integer.parseInt(parts[2]));
+				p.getCurrentField().set(p);
+				players.add(p);				
 				break;
+				
 			case "b":
+				Box b = new Box();
+				b.setField(fields.get(Integer.parseInt(parts[1])));
+				b.getCurrentField().set(b);
 				break;
 		}
-		//TODO
-		return null;
 	}
 	
 	private void CreateField(String line) {
@@ -76,7 +108,7 @@ public class MapLoader {
 				Switch s = new Switch();
 				friction(s, parts[2]);
 				switches.add(s);
-				connectedTD.add(Integer.parseInt(parts[3]));
+				trapdoorIdx.add(Integer.parseInt(parts[3]));
 				f = s;
 				break;
 				
@@ -93,8 +125,7 @@ public class MapLoader {
 				
 			default:
 				f = null;
-		}
-		
+		}		
 		fields.add(f);
 	}
 	
@@ -111,12 +142,10 @@ public class MapLoader {
 			break;
 		}
 	}
-					
+				
 	@Override
 	protected void finalize(){
 		sc.close();
 	}
-	
-	
 	
 }

@@ -20,12 +20,39 @@ public class Player extends Thing {
 		points = 0;
 	}
 	
-	public void step(Direction dir) {
+	public Player() {	
+		points = 0;
+		strength = 0;
+	}
+	
+	public Game getGame() {
+		return game;
+	}
 
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	public long getPoints() {
+		return points;
+	}
+
+	public void setPoints(long points) {
+		this.points = points;
+	}
+
+	public long getStrength() {
+		return strength;
+	}
+
+	public void setStrength(long strength) {
+		this.strength = strength;
+	}
+
+	public void step(Direction dir) {
 		Field f = this.getCurrentField();
 		Field f2 = f.getNeighbor(dir);		
-		f2.pushHereBy(this, this, dir, strength);
-	
+		f2.pushHereBy(this, this, dir, strength);	
 	}
 	
 	@Override
