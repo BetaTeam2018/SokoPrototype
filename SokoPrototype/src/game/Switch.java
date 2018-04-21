@@ -15,7 +15,11 @@ public class Switch extends Floor {
 	{
 		this.td=td;
 	}
+	public Switch(){}
 	
+	public void setTd(TrapDoor td) {
+		this.td = td;
+	}
 	public TrapDoor getTd()
 	{
 		return td;

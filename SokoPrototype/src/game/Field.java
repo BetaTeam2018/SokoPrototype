@@ -13,12 +13,19 @@ public abstract class Field {
 
     private Thing thing;
     private Map < Direction, Field > neighbors = new TreeMap < > ();
+    private Friction friction = Friction.NORMAL;
+    
 
 
-    //TODO friction
+    public Friction getFriction() {
+		return friction;
+	}
 
+	public void setFriction(Friction friction) {
+		this.friction = friction;
+	}
 
-    public void setNeighbor(Direction dir, Field field) {
+	public void setNeighbor(Direction dir, Field field) {
         neighbors.put(dir, field);
     }
 
@@ -40,7 +47,7 @@ public abstract class Field {
 
 
 
-    @SuppressWarnings("deprecation")
+    //@SuppressWarnings("deprecation")
     public boolean pushHereBy(Player pusher, Thing pushed, Direction dir, long strength ) {  
         
     	boolean result = true;
