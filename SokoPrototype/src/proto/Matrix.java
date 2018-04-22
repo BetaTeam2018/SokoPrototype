@@ -19,7 +19,6 @@ public class Matrix {
 				}
 			}
 			p.println();
-		}	
-		
+		}		
 	}	
 }

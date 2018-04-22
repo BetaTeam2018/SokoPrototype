@@ -19,10 +19,10 @@ public class Game {
     public void startGame() {        
         running = true;    
         
-        //Test
-        System.out.println("Hello World...");         
+        //csak próba kód
+        System.out.println("Hello World...");
         MapLoader ml = new MapLoader();
-        InputStream is = null;		
+        InputStream is = null;
 		try {
 			is = new FileInputStream(new File("src\\maps\\test.txt"));
 		} catch (FileNotFoundException e) {			
@@ -40,6 +40,16 @@ public class Game {
 		}
 		
 		Matrix mat = new Matrix();
+		for (Player p : players) 
+			p.setGame(this);
+		
+		
+		mat.Draw(System.out, map);
+				
+		players.get(0).step(Direction.RIGHT);
+		mat.Draw(System.out, map);
+		
+		players.get(0).step(Direction.RIGHT);
 		mat.Draw(System.out, map);
                 
     }

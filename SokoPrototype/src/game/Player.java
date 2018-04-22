@@ -10,11 +10,10 @@ package game;
 public class Player extends Thing {
 	
 	private Game game;
-	private long points;
-	private long strength;
-	
-	
-	
+	private int points;
+	private int strength;
+	private int endurance = 4;
+		
 	public Player(Game g) {	
 		this.game = g;
 		points = 0;
@@ -37,7 +36,7 @@ public class Player extends Thing {
 		return points;
 	}
 
-	public void setPoints(long points) {
+	public void setPoints(int points) {
 		this.points = points;
 	}
 
@@ -45,7 +44,7 @@ public class Player extends Thing {
 		return strength;
 	}
 
-	public void setStrength(long strength) {
+	public void setStrength(int strength) {
 		this.strength = strength;
 	}
 
@@ -55,8 +54,20 @@ public class Player extends Thing {
 		f2.pushHereBy(this, this, dir, strength);	
 	}
 	
+	
 	@Override
-	public boolean slideBy(Player pusher, Direction dir, long st) {
+	public int slideBy(Player pusher, Direction dir, int st) {		
+		int back = super.slideBy(pusher, dir, st);
+		
+		if(st-back > endurance) {
+			this.die();
+		}
+
+		return back;
+	}
+	
+	/*@Override
+	public boolean slideBy(Player pusher, Direction dir, int st) {
 
 		boolean pushable = super.slideBy(pusher, dir, st);
 		
@@ -65,7 +76,7 @@ public class Player extends Thing {
 		}
 
 		return true;
-	}
+	}*/
 	
 	@Override
 	public void die() {

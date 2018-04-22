@@ -9,7 +9,7 @@ package game;
 public class Floor extends Field {
 	
 	@Override
-	public boolean pushHereBy(Player pusher, Thing pushed, Direction dir, long strength) {
+	public int pushHereBy(Player pusher, Thing pushed, Direction dir, int strength) {
 		return super.pushHereBy(pusher, pushed, dir, strength);
 		
 		//

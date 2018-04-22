@@ -11,8 +11,8 @@ package game;
 public class Wall extends Field {
 	
 	@Override
-	public boolean pushHereBy(Player pusher, Thing pushed, Direction dir, long strength) {		
-		return false;
+	public int pushHereBy(Player pusher, Thing pushed, Direction dir, int strength) {		
+		return 0;
 	}
 
 	@Override

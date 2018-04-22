@@ -11,7 +11,7 @@ public class Box extends Thing {
 	
 	
 	@Override
-	public boolean slideBy(Player pusher, Direction dir, long strength) {
+	public int slideBy(Player pusher, Direction dir, int strength) {
 		return super.slideBy(pusher, dir, strength);
 	}
 	

@@ -14,11 +14,17 @@ public abstract class Thing {
 	
 	//TODO friction
 	
-	public boolean slideBy(Player pusher, Direction dir, long strength) {		
+	public int slideBy(Player pusher, Direction dir, int strength) {		
 		return this.getCurrentField().
 				getNeighbor(dir).
 				pushHereBy(pusher, this, dir, strength);
 	}
+	
+	/*public boolean slideBy(Player pusher, Direction dir, long strength) {		
+		return this.getCurrentField().
+				getNeighbor(dir).
+				pushHereBy(pusher, this, dir, strength);
+	}*/
 	
 	public abstract String MatrixElement();
 	
@@ -32,6 +38,7 @@ public abstract class Thing {
 	}
 	
 	public void die() {
+		currentField.setThingToNull();
 		currentField = null;
 	}
 	

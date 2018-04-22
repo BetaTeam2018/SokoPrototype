@@ -46,19 +46,38 @@ public abstract class Field {
         southern.setNeighbor(Direction.UP, northern);
     }
 
-
-
-    //@SuppressWarnings("deprecation")
-    public boolean pushHereBy(Player pusher, Thing pushed, Direction dir, long strength ) {  
+    
+    public int pushHereBy(Player pusher, Thing pushed, Direction dir, int strength ) {  
         
-    	boolean result = true;
+    	int result = strength;
+    	        
         
-        if (strength < 0) {
+
+        if (this.getThing() != null) { // ha van ezen a mezo"n valami
+            result = this.getThing().slideBy(pusher, dir, strength - friction.GetValue());
+        }  
+        
+        if (strength < friction.GetValue()) {
+        	return 0;
+        }
+        
+        if (result > 0) { // ide pakoljuk phused thing et.
+            pushed.setLastPusher(pusher);
+            pushed.setNewField(this);
+        }
+        return result;
+    }
+    
+    /*public boolean pushHereBy(Player pusher, Thing pushed, Direction dir, int strength ) {  
+        
+    	boolean result = true;    	
+        
+        if (strength < friction.GetValue()) {
         	return false;
         }
 
         if (this.getThing() != null) { // ha van ezen a mezo"n valami
-            result = this.getThing().slideBy(pusher, dir, strength);
+            result = this.getThing().slideBy(pusher, dir, strength - friction.GetValue());
         }   
 
         if (result == true) { // ide pakoljuk phused thing et.
@@ -66,21 +85,25 @@ public abstract class Field {
             pushed.setNewField(this);
         }
         return result;
-    }
+    }*/
 
     public void set(Box b) {
         if (thing != null)
-            System.err.println("The box is not null"); // TODO exception
+            System.err.println("The thing is not null! (Field.Set(box))"); // TODO exception
         thing = b; //Bermuda triangle LOL		
     }
 
     public void remove(Box b) {
         thing = null;
     }
+    
+    public void setThingToNull() {
+    	thing = null;
+    }
 
     public void set(Player p) {        
         if (thing != null)
-            System.err.println("Error: thing is not null"); // TODO exception
+            System.err.println("Error: thing is not null! (Field.Set(player))"); // TODO exception
       
         thing = p; //Bermuda triangle LOL		
     }
