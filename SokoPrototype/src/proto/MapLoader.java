@@ -1,5 +1,6 @@
-package game;
+package proto;
 
+import game.*;
 import java.util.List;
 import java.io.InputStream;
 import java.util.LinkedList;

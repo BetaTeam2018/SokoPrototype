@@ -14,6 +14,13 @@ public class Floor extends Field {
 		
 		//
 	}
+
+	@Override
+	public String MatrixElement() {		
+		return ".";
+	}
+	
+	
 	
 	
 }

@@ -13,7 +13,7 @@ public class Player extends Thing {
 	private long points;
 	private long strength;
 	
-
+	
 	
 	public Player(Game g) {	
 		this.game = g;
@@ -87,9 +87,14 @@ public class Player extends Thing {
 	@Override
 	public void setNewField(Field newField) {
 		
-		this.getCurrentField().remove(this); 	// Töröljük az ide mutató referenciát a jelenlegi field-rol.
-		this.setField(newField);				// Új field beállítása.
-		newField.set(this);						// A játékos bekötéseaz új field-re.
+		this.getCurrentField().remove(this); 	// TÃ¶rÃ¶ljÃ¼k az ide mutatÃ³ referenciÃ¡t a jelenlegi field-rol.
+		this.setField(newField);				// Ãšj field beÃ¡llÃ­tÃ¡sa.
+		newField.set(this);						// A jÃ¡tÃ©kos bekÃ¶tÃ©seaz Ãºj field-re.
 		
+	}
+
+	@Override
+	public String MatrixElement() {		
+		return "â˜º";
 	}
 }

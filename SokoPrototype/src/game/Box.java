@@ -18,9 +18,9 @@ public class Box extends Thing {
 	@Override
 	public void setNewField(Field newField) {		
 		
-		this.getCurrentField().remove(this); 	// Töröljük az ide mutató referenciát a jelenlegi field-rol.
-		this.setField(newField);				// Új field beállítása.
-		newField.set(this);						// A box bekötéseaz új field-re.
+		this.getCurrentField().remove(this); 	// TÃ¶rÃ¶ljÃ¼k az ide mutatÃ³ referenciÃ¡t a jelenlegi field-rol.
+		this.setField(newField);				// Ãšj field beÃ¡llÃ­tÃ¡sa.
+		newField.set(this);						// A box bekÃ¶tÃ©seaz Ãºj field-re.
 												//ez melyik?
 		
 	}
@@ -29,6 +29,11 @@ public class Box extends Thing {
 	{
 		this.getCurrentField().set((Box)null);
 		super.die();
+	}
+
+	@Override
+	public String MatrixElement() {
+		return "â– ";
 	}
 
 }

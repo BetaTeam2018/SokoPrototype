@@ -23,14 +23,14 @@ public class TrapDoor extends Floor {
 		}
 	}
 	/**
-	 * Azt az interakciót kezeli amikor egy játékos a csapóajtóra kerül. 
+	 * Azt az interakciï¿½t kezeli amikor egy jï¿½tï¿½kos a csapï¿½ajtï¿½ra kerï¿½l. 
 	 */
 	public void set(Player p) {
 		
-		if(opened) {								// Ha a csapóajtó nyitott, akkor a játékos meghal. 
+		if(opened) {								// Ha a csapï¿½ajtï¿½ nyitott, akkor a jï¿½tï¿½kos meghal. 
 			p.die();
 		}else {
-			super.set(p);							// Ha nincs nyitva, akkor helyezze rá a mezõre. 
+			super.set(p);							// Ha nincs nyitva, akkor helyezze rï¿½ a mezï¿½re. 
 		}		
 	}
 	
@@ -48,5 +48,10 @@ public class TrapDoor extends Floor {
 	
 	public void setState(boolean opened) {
 		this.opened = opened;
+	}
+	
+	@Override
+	public String MatrixElement() {		
+		return "t";
 	}
 }

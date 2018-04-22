@@ -20,6 +20,8 @@ public abstract class Thing {
 				pushHereBy(pusher, this, dir, strength);
 	}
 	
+	public abstract String MatrixElement();
+	
 	public abstract void setNewField(Field newField);
 	
 	public void setField(Field f) {

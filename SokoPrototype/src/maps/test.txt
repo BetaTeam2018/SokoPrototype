@@ -1,10 +1,16 @@
 6
-1
+2
 0 f N
 1 f O 
 2 s N 4
 3 f H
 4 t H
 5 w 
+6 f N
+7 a N
+8 f N
+9 h N
+10 f N
+11 w
 p 0 3
-b 4
+b 1

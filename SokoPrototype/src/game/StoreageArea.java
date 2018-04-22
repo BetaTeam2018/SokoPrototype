@@ -24,8 +24,11 @@ public class StoreageArea extends Floor {
 	
 	public void remove(Box b) {
 		super.remove(b);
-		b.getLastPusher().addPoints(pointValue);
-
-		
+		b.getLastPusher().addPoints(pointValue);		
+	}
+	
+	@Override
+	public String MatrixElement() {		
+		return "a";
 	}
 }

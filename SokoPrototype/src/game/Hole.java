@@ -32,4 +32,9 @@ public class Hole extends Floor {
 			p.die();	
 	}
 	
+	@Override
+	public String MatrixElement() {		
+		return "h";
+	}
+	
 }

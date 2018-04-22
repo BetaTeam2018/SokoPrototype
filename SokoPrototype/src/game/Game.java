@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import proto.MapLoader;
+import proto.Matrix;
+
 public class Game {
 	
 	private boolean running;		
@@ -35,6 +38,9 @@ public class Game {
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}
+		
+		Matrix mat = new Matrix();
+		mat.Draw(System.out, map);
                 
     }
 

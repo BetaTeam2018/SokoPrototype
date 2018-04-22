@@ -15,7 +15,8 @@ public abstract class Field {
     private Map < Direction, Field > neighbors = new TreeMap < > ();
     private Friction friction = Friction.NORMAL;
     
-
+    
+    public abstract String MatrixElement();
 
     public Friction getFriction() {
 		return friction;
