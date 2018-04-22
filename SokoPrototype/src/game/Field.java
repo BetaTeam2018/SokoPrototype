@@ -50,16 +50,20 @@ public abstract class Field {
     public int pushHereBy(Player pusher, Thing pushed, Direction dir, int strength ) {  
         
     	int result = strength;
-    	        
+    	
+    	// ha van ezen a mezo"n valami
+        if (this.getThing() != null) { 
+        	if (strength < friction.GetValue()) { // és már nincs ereje:
+            	result = 0;
+            }else {	// egyébként ha még maradt ereje:
+            	result = this.getThing().slideBy(pusher, dir, strength - friction.GetValue());
+            }
         
-
-        if (this.getThing() != null) { // ha van ezen a mezo"n valami
-            result = this.getThing().slideBy(pusher, dir, strength - friction.GetValue());
-        }  
+        // ha a mezőn nincs semmi   
+        } else {	     	
+        	result = strength;        	
+        }       
         
-        if (strength < friction.GetValue()) {
-        	return 0;
-        }
         
         if (result > 0) { // ide pakoljuk phused thing et.
             pushed.setLastPusher(pusher);

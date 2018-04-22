@@ -35,7 +35,9 @@ public class TrapDoor extends Floor {
 	}
 	
 	public void open() {		
-		opened = true;		
+		opened = true;
+		if(this.getThing() != null)
+			this.getThing().die();
 	}
 	
 	public void close() {		
