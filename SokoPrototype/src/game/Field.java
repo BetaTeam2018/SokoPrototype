@@ -65,9 +65,9 @@ public abstract class Field {
         }       
         
         
-        if (result > 0) { // ide pakoljuk phused thing et.
-            pushed.setLastPusher(pusher);
-            pushed.setNewField(this);
+        if (result > 0) { // ide pakoljuk pushed thing et.
+        	pushed.setLastPusher(pusher);
+        	pushed.setNewField(this);
         }
         return result;
     }
@@ -94,7 +94,7 @@ public abstract class Field {
     public void set(Box b) {
         if (thing != null)
             System.err.println("The thing is not null! (Field.Set(box))"); // TODO exception
-        thing = b; //Bermuda triangle LOL		
+        thing = b;	
     }
 
     public void remove(Box b) {
@@ -109,7 +109,7 @@ public abstract class Field {
         if (thing != null)
             System.err.println("Error: thing is not null! (Field.Set(player))"); // TODO exception
       
-        thing = p; //Bermuda triangle LOL		
+        thing = p;	
     }
 
     public void remove(Player p) {

@@ -108,4 +108,8 @@ public class Player extends Thing {
 	public String MatrixElement() {		
 		return "☺";
 	}
+	public void changeFriction(Friction fr)
+	{
+		this.getCurrentField().setFriction(fr);
+	}
 }

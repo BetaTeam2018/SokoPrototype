@@ -24,7 +24,7 @@ public class Game {
         MapLoader ml = new MapLoader();
         InputStream is = null;
 		try {
-			is = new FileInputStream(new File("src\\maps\\test.txt"));
+			is = new FileInputStream(new File("src\\maps\\test_3.txt"));
 		} catch (FileNotFoundException e) {			
 			e.printStackTrace();
 		}
@@ -45,12 +45,16 @@ public class Game {
 		
 		
 		mat.Draw(System.out, map);
-				
+	
 		players.get(0).step(Direction.RIGHT);
 		mat.Draw(System.out, map);
+		System.out.println("player pontjai: "+players.get(0).getPoints());
 		
 		players.get(0).step(Direction.RIGHT);
 		mat.Draw(System.out, map);
+		
+		System.out.println("player pontjai: "+players.get(0).getPoints());
+		System.out.println("player 2 pontjai: "+players.get(1).getPoints());
                 
     }
 

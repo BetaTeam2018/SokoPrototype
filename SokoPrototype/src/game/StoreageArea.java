@@ -10,21 +10,27 @@ package game;
 public class StoreageArea extends Floor {
 	
 	long pointValue;
+	Player pointTo;
 	
 	public StoreageArea()
 	{
 		super();
-		//pointValue=0;
+		pointValue=1;
+		pointTo=null;
 	}
 	
 	public void set(Box b) {
 		super.set(b);
-		b.getLastPusher().addPoints(pointValue);
+		//b.getLastPusher().addPoints(pointValue);
+		pointTo=b.getLastPusher();
+		pointTo.addPoints(pointValue);
 	}
 	
 	public void remove(Box b) {
 		super.remove(b);
-		b.getLastPusher().addPoints(pointValue);		
+		//b.getLastPusher().subtractPoints(pointValue);
+		pointTo.subtractPoints(pointValue);
+		pointTo=null;
 	}
 	
 	@Override
