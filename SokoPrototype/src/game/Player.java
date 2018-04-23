@@ -98,9 +98,9 @@ public class Player extends Thing {
 	@Override
 	public void setNewField(Field newField) {
 		
-		this.getCurrentField().remove(this); 	// Töröljük az ide mutató referenciát a jelenlegi field-rol.
-		this.setField(newField);				// Új field beállítása.
-		newField.set(this);						// A játékos bekötéseaz új field-re.
+		this.getCurrentField().remove(this); 	// TĂ¶rĂ¶ljĂĽk az ide mutatĂł referenciĂˇt a jelenlegi field-rol.
+		this.setField(newField);				// Ăšj field beĂˇllĂ­tĂˇsa.
+		newField.set(this);						// A jĂˇtĂ©kos bekĂ¶tĂ©seaz Ăşj field-re.
 		
 	}
 
