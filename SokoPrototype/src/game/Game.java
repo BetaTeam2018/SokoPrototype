@@ -48,14 +48,10 @@ public class Game {
 	
 		players.get(0).step(Direction.RIGHT);
 		mat.Draw(System.out, map);
-		System.out.println("player pontjai: "+players.get(0).getPoints());
 		
 		players.get(0).step(Direction.RIGHT);
 		mat.Draw(System.out, map);
 		
-		System.out.println("player pontjai: "+players.get(0).getPoints());
-		System.out.println("player 2 pontjai: "+players.get(1).getPoints());
-                
     }
 
     public void endGame() {
