@@ -22,33 +22,10 @@ public class Game {
         running = true;    
         
       
-        String testFilename = this.gameMainLoop();
+        this.gameMainLoop();
         //csak próba kód
        // System.out.println("Hello World...");
-        MapLoader ml = new MapLoader();
-        InputStream is = null;
-		try {
-			is = new FileInputStream(new File("src\\maps\\" + testFilename));
-		} catch (FileNotFoundException e) {			
-			e.printStackTrace();
-		}
-		
-		ml.Load(is);
-		players = ml.getPlayers();
-		map = ml.getFields();		
-		
-		try {
-			is.close();
-		} catch (IOException e) {			
-			e.printStackTrace();
-		}
-		
-		Matrix mat = new Matrix();
-		for (Player p : players) 
-			p.setGame(this);
-		
-		
-		mat.Draw(System.out, map);
+       
 		//commandreader();
 		/*players.get(0).step(Direction.RIGHT);
 		mat.Draw(System.out, map);
@@ -61,6 +38,34 @@ public class Game {
 		//System.out.println("player 2 pontjai: "+players.get(1).getPoints());
                 
     }
+    
+    public void drawMap(String testFilename) {
+    	 MapLoader ml = new MapLoader();
+         InputStream is = null;
+ 		try {
+ 			is = new FileInputStream(new File("src\\maps\\" + testFilename));
+ 		} catch (FileNotFoundException e) {			
+ 			e.printStackTrace();
+ 		}
+ 		
+ 		ml.Load(is);
+ 		players = ml.getPlayers();
+ 		map = ml.getFields();		
+ 		
+ 		try {
+ 			is.close();
+ 		} catch (IOException e) {			
+ 			e.printStackTrace();
+ 		}
+ 		
+ 		Matrix mat = new Matrix();
+ 		for (Player p : players) 
+ 			p.setGame(this);
+ 		
+ 		
+ 		//mat.Draw(System.out, map);
+    	
+    }
 
     public void endGame() {
         running = false;
@@ -71,7 +76,7 @@ public class Game {
 	}
 	
 	
-	public String gameMainLoop() {
+	public void gameMainLoop() {
 		String testfile = "";
         int mainMenulistNum = -1;
         while (mainMenulistNum != 0) {
@@ -83,6 +88,12 @@ public class Game {
             case 1:							// Teszt1  
             	// betöltése + interpreter
             	testfile = "test_1.txt";
+            	drawMap(testfile);
+            	
+            	for (int i = 1; i<=3 ; i++) {
+            		commandInterpreter(sc.nextLine());
+            		drawMap(testfile);
+            	}
             	break;
             case 2:							// Parancssor 
             	
@@ -90,7 +101,7 @@ public class Game {
             }
         }
         
-        return testfile;
+        
 	}
 	
 	public void commandInterpreter(String command) {
@@ -117,10 +128,18 @@ public class Game {
 			} else {
 				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
 			}
+			
+			if (commands[1].equals("p1")) {
+				players.set(0, commander);
+			} else if (commands[1].equals("p2")) {
+				players.set(1, commander);
+			} 
 		}
+		
+		
 		}
 	
-	private Scanner sc;	
+	private Scanner sc = new Scanner(System.in);	
 	public void commandreader() {
 		int i = 1;
 		while (i++ <= 3) {
