@@ -45,7 +45,6 @@ public class MapLoader {
 
 	public void Load(InputStream is){
 		sc = new Scanner(is);
-		
 		x = Integer.parseInt(sc.nextLine());
 		y = Integer.parseInt(sc.nextLine());
 		

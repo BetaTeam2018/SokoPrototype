@@ -61,6 +61,7 @@ public class Player extends Thing {
 		
 		if(st-back > endurance) {
 			this.die();
+			return st;
 		}
 
 		return back;
