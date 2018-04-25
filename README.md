@@ -37,17 +37,17 @@ H | mézes
 
 **Példa** 
 
-Kód | Értelmezés
------------- | -------------
-5 |
-5 |
-0 w N |
-1 t N 2 |
-2 s O |
-3 f H |
-4 h H |
-p 3 2 |
-b 4 |
+Kód | Értelmezés | Megjegyzés
+------------ | ------------- | -------------
+5 | 5 egység hosszú széles | `x = 5`
+1 | 1 egység hosszú magas | `y = 1`  
+0 w N | 0. mező egy fal és normál típusú
+1 t N 2 | 1. mező egy csapóajtó normáltípusú súrlódás 2 nagyságú
+2 s O | 2. mező egy kapcsoló olajjal leöntve
+3 f H | 3. mező egy üres mező (padló) mézzel leöntve
+4 h N | 4. mező egy lyuk | (5-1). elem tehát ez az utolsó 
+p 3 2 | A p játékos (3;1) helyen van és 2 erővel ellátva | `(x;y) = (3;1)`
+b 4 | A b doboz (3;1) helyen van
 
 # Bemeneti nyelv 
 ## A menü parancsai
