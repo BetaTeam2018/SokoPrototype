@@ -21,7 +21,10 @@ public class Game {
     public void startGame() {        
         running = true;    
         
-      
+        // List Test-cases: Listázza ki a teszt-eseteket 
+        // Elindul a Game-Loop, aminek az alap állapota, mindig a tesztek kilistázása. 
+        // A kilistázás mindig akkor történik, hogy egy tesztből kilép a felhasználó. 
+        
         this.gameMainLoop();
         //csak próba kód
        // System.out.println("Hello World...");
@@ -63,7 +66,7 @@ public class Game {
  			p.setGame(this);
  		
  		
- 		//mat.Draw(System.out, map);
+ 		mat.Draw(System.out, map);
     	
     }
 
@@ -90,9 +93,12 @@ public class Game {
             	testfile = "test_1.txt";
             	drawMap(testfile);
             	
-            	for (int i = 1; i<=3 ; i++) {
-            		commandInterpreter(sc.nextLine());
-            		drawMap(testfile);
+            	for (int i = 1; i<=3 ; i++) { 
+            		String scr = sc.nextLine();
+            		System.out.println(scr);
+            		commandInterpreter(scr);
+            		Matrix mat = new Matrix();
+            		mat.Draw(System.out, map);
             	}
             	break;
             case 2:							// Parancssor 
