@@ -92,14 +92,17 @@ public class Game {
             	// betöltése + interpreter
             	testfile = "test_1.txt";
             	drawMap(testfile);
+            	
             	System.out.println("-exit- kilép a tesztből");
             	testExit=false;
             	
             	while(testExit==false) {
             		String command=sc.nextLine();
-            		commandInterpreter(command);
             		Matrix mat=new Matrix();
+            		
+            		commandInterpreter(command);
             		mat.Draw(System.out, map);
+            		
             		if(command.equals("exit"))
             			testExit=true;
             	}
@@ -116,33 +119,33 @@ public class Game {
 	public void commandInterpreter(String command) {
 		String[] commands = command.split(" ");
 		Player commander = new Player();
-		switch (commands[0]) {
-		case "step": 
-			if (commands[1].equals("p1")) {
-				commander = players.get(0);
-			} else if (commands[1].equals("p2")) {
-				commander = players.get(1);			
-			} else {
-			System.out.println("Nem érvényes a szintaxis, próbálja újra!");
-		 	}
-			
-			if (commands[2].equals("RIGHT")) {
-				commander.step(Direction.RIGHT);
-			} else if (commands[1].equals("LEFT")) {
-				commander.step(Direction.LEFT);			
-			} else if (commands[1].equals("DOWN")) {
-				commander.step(Direction.DOWN);
-			} else if (commands[1].equals("UP")) {
-				commander.step(Direction.UP);
-			} else {
+		
+		switch (commands[0])
+		{
+			case "step": 
+				if (commands[1].equals("p1")) {
+					commander = players.get(0);
+				} else if (commands[1].equals("p2")&&(players.size()==2)) {
+					commander = players.get(1);			
+				} else {
 				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
-			}
-			
-			/*if (commands[1].equals("p1")) {
-				players.set(0, commander);
-			} else if (commands[1].equals("p2")) {
-				players.set(1, commander);
-			} */
+				break;
+			 	}
+				
+				if (commands[2].equals("RIGHT")) {
+					commander.step(Direction.RIGHT);
+				} else if (commands[1].equals("LEFT")) {
+					commander.step(Direction.LEFT);			
+				} else if (commands[1].equals("DOWN")) {
+					commander.step(Direction.DOWN);
+				} else if (commands[1].equals("UP")) {
+					commander.step(Direction.UP);
+				} else {
+					System.out.println("Nem érvényes a szintaxis, próbálja újra!");
+				}
+				break;
+			case "friction":
+		
 		}
 		
 		
