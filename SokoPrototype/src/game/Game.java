@@ -43,7 +43,7 @@ public class Game {
     	 MapLoader ml = new MapLoader();
          InputStream is = null;
  		try {
- 			is = new FileInputStream(new File("src\\maps\\" + testFilename));
+ 			is = new FileInputStream(new File("bin\\maps\\" + testFilename));
  		} catch (FileNotFoundException e) {			
  			e.printStackTrace();
  		}
@@ -63,7 +63,7 @@ public class Game {
  			p.setGame(this);
  		
  		
- 		//mat.Draw(System.out, map);
+ 		mat.Draw(System.out, map);
     	
     }
 
@@ -77,8 +77,11 @@ public class Game {
 	
 	
 	public void gameMainLoop() {
+		
 		String testfile = "";
         int mainMenulistNum = -1;
+        boolean testExit=false;
+        
         while (mainMenulistNum != 0) {
         	Menu.printTestMenuList();
         	mainMenulistNum = Menu.readListNumber();
@@ -89,10 +92,16 @@ public class Game {
             	// betöltése + interpreter
             	testfile = "test_1.txt";
             	drawMap(testfile);
+            	System.out.println("-exit- kilép a tesztből");
+            	testExit=false;
             	
-            	for (int i = 1; i<=3 ; i++) {
-            		commandInterpreter(sc.nextLine());
-            		drawMap(testfile);
+            	while(testExit==false) {
+            		String command=sc.nextLine();
+            		commandInterpreter(command);
+            		Matrix mat=new Matrix();
+            		mat.Draw(System.out, map);
+            		if(command.equals("exit"))
+            			testExit=true;
             	}
             	break;
             case 2:							// Parancssor 
@@ -129,11 +138,11 @@ public class Game {
 				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
 			}
 			
-			if (commands[1].equals("p1")) {
+			/*if (commands[1].equals("p1")) {
 				players.set(0, commander);
 			} else if (commands[1].equals("p2")) {
 				players.set(1, commander);
-			} 
+			} */
 		}
 		
 		
