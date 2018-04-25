@@ -1,13 +1,15 @@
-7
+9
 1
-0 f n
-1 f n
-2 f n
-3 f n
-4 f n
-5 f n
-6 f n
-p 0 5
-b 1
-b 3
-b 5
+0 w N
+1 f N
+2 f N
+3 f N
+4 f N
+5 f N
+6 f N
+7 f N
+8 w N
+p 1 5
+b 2
+b 4
+b 6
