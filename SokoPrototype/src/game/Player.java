@@ -24,31 +24,31 @@ public class Player extends Thing {
 		strength = 0;
 	}
 	
-	public Game getGame() {
+	public Game getGame() {				//visszaadja az adott játékot
 		return game;
 	}
 
-	public void setGame(Game game) {
+	public void setGame(Game game) {	//beállítja a játékot
 		this.game = game;
 	}
 
-	public long getPoints() {
+	public long getPoints() {			//visszaadja a Player pontjait
 		return points;
 	}
 
-	public void setPoints(int points) {
+	public void setPoints(int points) {	//beállítja a Player pontjait
 		this.points = points;
 	}
 
-	public long getStrength() {
+	public long getStrength() {			//visszaadja a Player erejét
 		return strength;
 	}
 
-	public void setStrength(int strength) {
+	public void setStrength(int strength) {	//beállítja a Player erejét
 		this.strength = strength;
 	}
 
-	public void step(Direction dir) {
+	public void step(Direction dir) {		//a megadott irányba lépés
 		Field f = this.getCurrentField();
 		Field f2 = f.getNeighbor(dir);		
 		f2.pushHereBy(this, this, dir, strength);	
@@ -56,7 +56,7 @@ public class Player extends Thing {
 	
 	
 	@Override
-	public int slideBy(Player pusher, Direction dir, int st) {		
+	public int slideBy(Player pusher, Direction dir, int st) {	//akkor hívódik meg ha megpróbálják eltolni egy másik mezőre
 		int back = super.slideBy(pusher, dir, st);
 		
 		if(st-back > endurance) {
@@ -67,20 +67,9 @@ public class Player extends Thing {
 		return back;
 	}
 	
-	/*@Override
-	public boolean slideBy(Player pusher, Direction dir, int st) {
-
-		boolean pushable = super.slideBy(pusher, dir, st);
-		
-		if(pushable == false) {
-			this.die();
-		}
-
-		return true;
-	}*/
 	
 	@Override
-	public void die() {
+	public void die() {			//megöli a Playert
 
 		// this.getCurrentField().set((Player)null);
 		super.die();
@@ -88,28 +77,28 @@ public class Player extends Thing {
 
 	}
 	
-	public void addPoints(long p) {
+	public void addPoints(long p) {	//adott számú pontot ad a Playernek
 		points += p;
 	}
 	
-	public void subtractPoints(long p) {
+	public void subtractPoints(long p) {	//adott számú pontot vesz el a Playertől
 		points -= p;
 	}
 	
 	@Override
-	public void setNewField(Field newField) {
+	public void setNewField(Field newField) {	//Player áthelyezése egy új Fieldre
 		
-		this.getCurrentField().remove(this); 	// TĂ¶rĂ¶ljĂĽk az ide mutatĂł referenciĂˇt a jelenlegi field-rol.
-		this.setField(newField);				// Ăšj field beĂˇllĂ­tĂˇsa.
-		newField.set(this);						// A jĂˇtĂ©kos bekĂ¶tĂ©seaz Ăşj field-re.
+		this.getCurrentField().remove(this); 	//Player levétele az előzőről
+		this.setField(newField);				//Player áthelyezése az újra
+		newField.set(this);						
 		
 	}
 
 	@Override
-	public String MatrixElement() {		
+	public String MatrixElement() {				//kiíráshoz szükséges
 		return "☺";
 	}
-	public void changeFriction(Friction fr)
+	public void changeFriction(Friction fr)		//A Field súrlódásának megváltoztatása amin a Player van
 	{
 		this.getCurrentField().setFriction(fr);
 	}

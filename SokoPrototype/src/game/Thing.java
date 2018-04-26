@@ -12,7 +12,6 @@ public abstract class Thing {
 	private Player lastPusher;
 	private Field currentField;
 	
-	//TODO friction
 	
 	public int slideBy(Player pusher, Direction dir, int strength) {		
 		return this.getCurrentField().
@@ -20,11 +19,6 @@ public abstract class Thing {
 				pushHereBy(pusher, this, dir, strength);
 	}
 	
-	/*public boolean slideBy(Player pusher, Direction dir, long strength) {		
-		return this.getCurrentField().
-				getNeighbor(dir).
-				pushHereBy(pusher, this, dir, strength);
-	}*/
 	
 	public abstract String MatrixElement();
 	

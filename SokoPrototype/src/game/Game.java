@@ -11,115 +11,130 @@ import java.util.Scanner;
 import proto.MapLoader;
 import proto.Matrix;
 import proto.Menu;
-
+/**
+ * 
+ * A játékot irányító osztály ebben inicializálódik a minden a játékhoz szükséges adat
+ *
+ */
 public class Game {
-
-	private boolean running;
+	/**
+	 * az adott pálya mátrixa
+	 */
 	private Field[][] map;
+	/**
+	 * a pályán lévő játékosok listája
+	 */
 	private List<Player> players;
+	/**
+	 * Scanner objektum amelynek segítségével a bementről olvasunk
+	 */
+	private Scanner sc = new Scanner(System.in);
 
+	/**
+	 * elindítja a játékot
+	 */
 	public void startGame() {
-		running = true;
 
 		this.gameMainLoop();
-		// csak próba kód
-		// System.out.println("Hello World...");
-
-		// commandreader();
-		/*
-		 * players.get(0).step(Direction.RIGHT); mat.Draw(System.out, map);
-		 * 
-		 * players.get(0).step(Direction.RIGHT); mat.Draw(System.out, map);
-		 */
-
-		System.out.println("player pontjai: " + players.get(0).getPoints());
-		// System.out.println("player 2 pontjai: "+players.get(1).getPoints());
 
 	}
 
-	public void drawMap(String testFilename) {
+	/**
+	 * pálya kirajzoló, paraméterként megkapja a pályát tartalmazó fájl nevét
+	 * @param testFilename a pályát tartalmazó fájl neve
+	 */
+	public void drawMap(String testFilename) {	
 		MapLoader ml = new MapLoader();
 		InputStream is = null;
 		try {
-			is = new FileInputStream(new File("bin\\maps\\" + testFilename));
+			is = new FileInputStream(new File("bin\\maps\\" + testFilename)); //fájl megnyitása
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 
-		ml.Load(is);
+		ml.Load(is);								//pálya betöltése és a szükséges változók beállítása
 		players = ml.getPlayers();
 		map = ml.getFields();
 
 		try {
-			is.close();
+			is.close();								//fájl bezárása
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		Matrix mat = new Matrix();
-		for (Player p : players)
+		for (Player p : players)					//játékosoknak a pálya átadása
 			p.setGame(this);
 
-		mat.Draw(System.out, map);
+		mat.Draw(System.out, map);				//pálya kirajzolása
 
 	}
 
+	/**
+	 * a játék befejezésekor végrehajtandó műveleteket végzi el
+	 */
 	public void endGame() {
-		running = false;
+		sc.close();
 	}
-
-	public static void main(String[] args) {
+/**
+ * main függvény, ahonnan a program indul, elindít egy játékot
+ * @param args
+ */
+	public static void main(String[] args) {	//játék indítása
 		new Game().startGame();
 	}
 
+	/**
+	 * 
+	 */
 	public void gameMainLoop() {
 
 		String testfile = "";
-		int mainMenulistNum = -1;
+		int mainMenulistNum = -1;								//szükséges változók
 		boolean testExit = false;
 
 		while (mainMenulistNum != 0) {
 			Menu.printTestMenuList();
-			mainMenulistNum = Menu.readListNumber();
+			mainMenulistNum = Menu.readListNumber();			//a szükséges teszt számának beolvasása
 
-			testfile = "test_" + mainMenulistNum + ".txt";
+			testfile = "test_" + mainMenulistNum + ".txt";		//a fájl megnyitása majd az alaphelyzet kirajzolása
 			drawMap(testfile);
 
-			System.out.println("-exit- kilép a tesztből");
 			testExit = false;
 
 			while (testExit == false) {
-				String command = sc.nextLine();
+				String command = sc.nextLine();					//következő parancs beolvasása
 				Matrix mat = new Matrix();
 
-				commandInterpreter(command);
-				mat.Draw(System.out, map);
+				commandInterpreter(command);					//parancs feldolgozása
+				mat.Draw(System.out, map);						//aktuális állapot kiírása
 
-				if (command.equals("exit"))
+				if (command.equals("exit"))						//kilépés ha szükséges
 					testExit = true;
 
 			}
 		}
+		endGame();
 
 	}
 
-	public void commandInterpreter(String command) {
-		String[] commands = command.split(" ");
+	public void commandInterpreter(String command) { 					//parancs feldolgozó
+		String[] commands = command.split(" ");						//parancs feldarabolása
 		Player commander = new Player();
 
 		switch (commands[0]) {
-		case "step":
-			if (commands[1].equals("p1")) {
+		case "step":												//step parancs
+			if (commands[1].equals("p1")&& (players.size() >= 1)) {	//kiválasztjuk, hogy melyik Playerre vonatkozik
 				commander = players.get(0);
-			} else if (commands[1].equals("p2") && (players.size() == 2)) {
+			} else if (commands[1].equals("p2") && (players.size() >= 2)) {
 				commander = players.get(1);
 			} else {
-				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
+				System.out.println("Nem érvényes a szintaxis, próbálja újra!");	//érvénytelen parancs esetén
 				break;
 			}
 
-			if (commands[2].equals("RIGHT")) {
-				commander.step(Direction.RIGHT);
+			if (commands[2].equals("RIGHT")) {						//kiválasztjuk, hogy melyik irányra vonatkozik
+				commander.step(Direction.RIGHT);					//majd végrehajtjuk a parancsot
 			} else if (commands[1].equals("LEFT")) {
 				commander.step(Direction.LEFT);
 			} else if (commands[1].equals("DOWN")) {
@@ -127,60 +142,36 @@ public class Game {
 			} else if (commands[1].equals("UP")) {
 				commander.step(Direction.UP);
 			} else {
-				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
+				System.out.println("Nem érvényes a szintaxis, próbálja újra!"); //érvénytelen parancs esetén
 				break;
 			}
 
 			break;
-		case "friction":
-			if (commands[1].equals("p1")) {
+		case "friction":										//friction parancs
+			if (commands[1].equals("p1")) {						//Player kiválasztása
 				commander = players.get(0);
 			} else if (commands[1].equals("p2") && (players.size() == 2)) {
 				commander = players.get(1);
 			} else {
-				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
+				System.out.println("Nem érvényes a szintaxis, próbálja újra!");	//érvénytelen parancs esetén
 				break;
 			}
 
-			if (commands[2].equals("OIL")) {
+			if (commands[2].equals("OIL")) {					//súrlódás kiválasztása, majd végrehajtás
 				commander.changeFriction(Friction.OIL);
 			} else if (commands[1].equals("NORMAL")) {
 				commander.changeFriction(Friction.NORMAL);
 			} else if (commands[1].equals("HONEY")) {
 				commander.changeFriction(Friction.HONEY);
 			} else {
-				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
+				System.out.println("Nem érvényes a szintaxis, próbálja újra!");	//érvénytelen parancs esetén
 				break;
 			}
 
 			break;
-		case "check":
-			if(Integer.parseInt(commands[1])>map.length||Integer.parseInt(commands[2])>map[0].length)
-			{
-				System.out.println("a megadott koordináta nincs a pályán");
-				break;
-			}
-			else
-			{
-				System.out.println(map[Integer.parseInt(commands[1])-1][Integer.parseInt(commands[2])-1].getFriction());
-				System.out.println(map[Integer.parseInt(commands[1])-1][Integer.parseInt(commands[2])-1].getThing());
-			}
-			
-				
-
 		}
 
 	}
-
-	private Scanner sc = new Scanner(System.in);
-
-	/*public void commandreader() {
-		int i = 1;
-		while (i++ <= 3) {
-			commandInterpreter(sc.nextLine());
-		}
-
-	}*/
 
 	@Override
 	protected void finalize() {

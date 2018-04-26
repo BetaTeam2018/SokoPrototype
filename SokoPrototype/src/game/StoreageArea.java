@@ -19,22 +19,20 @@ public class StoreageArea extends Floor {
 		pointTo=null;
 	}
 	
-	public void set(Box b) {
+	public void set(Box b) {						//ha rákerül egy Box pontot ad a Playernek aki rátolta
 		super.set(b);
-		//b.getLastPusher().addPoints(pointValue);
 		pointTo=b.getLastPusher();
 		pointTo.addPoints(pointValue);
 	}
 	
-	public void remove(Box b) {
+	public void remove(Box b) {						//ha lekerül róla a Box elveszi attól a Playertől a pontot aki rátolta
 		super.remove(b);
-		//b.getLastPusher().subtractPoints(pointValue);
 		pointTo.subtractPoints(pointValue);
 		pointTo=null;
 	}
 	
 	@Override
-	public String MatrixElement() {		
+	public String MatrixElement() {					//kiiratáshoz szükséges
 		return "a";
 	}
 }

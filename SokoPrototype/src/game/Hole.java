@@ -9,31 +9,22 @@ package game;
 
 public class Hole extends Floor {	
 	
-	/**
-	 * @param 
-	 * @date 3/13/2018
- 	 * @author 
-	 */
+	
 	@Override
-	public void set(Box b) {
+	public void set(Box b) {			//ha rákerül egy Box megöli (a fv akkor hívódik meg ha rákerül valami)
 		if(b != null)
 			b.die();
 	}
 	
 	
-	/**
-	 * @param 
-	 * @date 3/13/2018
- 	 * @author 
-	 */
 	@Override
-	public void set(Player p) {
+	public void set(Player p) {			//ha rákerül egy Player megöli (a fv akkor hívódik meg ha rákerül valami)
 		if(p != null) 
 			p.die();	
 	}
 	
 	@Override
-	public String MatrixElement() {		
+	public String MatrixElement() {		//kiíráshoz szükséges
 		return "h";
 	}
 	

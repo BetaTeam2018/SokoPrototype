@@ -7,6 +7,11 @@
 */
 
 package game;
-public enum Direction {
+/**
+ * 
+ * Enumeráció az irányoknak
+ *
+ */
+public enum Direction {		
 	UP, DOWN, LEFT, RIGHT
 }
