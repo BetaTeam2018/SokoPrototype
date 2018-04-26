@@ -26,32 +26,17 @@ public class Game {
 	 * a pályán lévő játékosok listája
 	 */
 	private List<Player> players;
-<<<<<<< HEAD
 	/**
 	 * Scanner objektum amelynek segítségével a bementről olvasunk
 	 */
-=======
->>>>>>> 036032eb9664c9b3852ecd25881b1d0dd51ed793
 	private Scanner sc = new Scanner(System.in);
 
 	/**
 	 * elindítja a játékot
 	 */
 	public void startGame() {
-<<<<<<< HEAD
-
-		this.gameMainLoop();
-=======
-		running = true;
-		
-		// A menü parancsai
 		
 		this.gameMainLoop();
-		
-		System.out.println("player pontjai: " + players.get(0).getPoints());
-		// System.out.println("player 2 pontjai: "+players.get(1).getPoints());
->>>>>>> 036032eb9664c9b3852ecd25881b1d0dd51ed793
-
 	}
 
 	/**
@@ -121,13 +106,9 @@ public class Game {
 				String command = sc.nextLine();					//következő parancs beolvasása
 				Matrix mat = new Matrix();
 
-<<<<<<< HEAD
-				commandInterpreter(command);					//parancs feldolgozása
+				Interpreter.readCommand(command, players, map);	//parancs feldolgozása
 				mat.Draw(System.out, map);						//aktuális állapot kiírása
-=======
-				Interpreter.readCommand(command, players, map);
-				mat.Draw(System.out, map);
->>>>>>> 036032eb9664c9b3852ecd25881b1d0dd51ed793
+
 
 				if (command.equals("exit"))						//kilépés ha szükséges
 					testExit = true;
@@ -138,72 +119,7 @@ public class Game {
 
 	}
 
-<<<<<<< HEAD
-	public void commandInterpreter(String command) { 					//parancs feldolgozó
-		String[] commands = command.split(" ");						//parancs feldarabolása
-		Player commander = new Player();
 
-		switch (commands[0]) {
-		case "step":												//step parancs
-			if (commands[1].equals("p1")&& (players.size() >= 1)) {	//kiválasztjuk, hogy melyik Playerre vonatkozik
-				commander = players.get(0);
-			} else if (commands[1].equals("p2") && (players.size() >= 2)) {
-				commander = players.get(1);
-			} else {
-				System.out.println("Nem érvényes a szintaxis, próbálja újra!");	//érvénytelen parancs esetén
-				break;
-			}
-
-			if (commands[2].equals("RIGHT")) {						//kiválasztjuk, hogy melyik irányra vonatkozik
-				commander.step(Direction.RIGHT);					//majd végrehajtjuk a parancsot
-			} else if (commands[1].equals("LEFT")) {
-				commander.step(Direction.LEFT);
-			} else if (commands[1].equals("DOWN")) {
-				commander.step(Direction.DOWN);
-			} else if (commands[1].equals("UP")) {
-				commander.step(Direction.UP);
-			} else {
-				System.out.println("Nem érvényes a szintaxis, próbálja újra!"); //érvénytelen parancs esetén
-				break;
-			}
-
-			break;
-		case "friction":										//friction parancs
-			if (commands[1].equals("p1")) {						//Player kiválasztása
-				commander = players.get(0);
-			} else if (commands[1].equals("p2") && (players.size() == 2)) {
-				commander = players.get(1);
-			} else {
-				System.out.println("Nem érvényes a szintaxis, próbálja újra!");	//érvénytelen parancs esetén
-				break;
-			}
-
-			if (commands[2].equals("OIL")) {					//súrlódás kiválasztása, majd végrehajtás
-				commander.changeFriction(Friction.OIL);
-			} else if (commands[1].equals("NORMAL")) {
-				commander.changeFriction(Friction.NORMAL);
-			} else if (commands[1].equals("HONEY")) {
-				commander.changeFriction(Friction.HONEY);
-			} else {
-				System.out.println("Nem érvényes a szintaxis, próbálja újra!");	//érvénytelen parancs esetén
-				break;
-			}
-
-			break;
-		}
-
-	}
-=======
-	
-
-	/*public void commandreader() {
-		int i = 1;
-		while (i++ <= 3) {
-			commandInterpreter(sc.nextLine());
-		}
-
-	}*/
->>>>>>> 036032eb9664c9b3852ecd25881b1d0dd51ed793
 
 	@Override
 	protected void finalize() {

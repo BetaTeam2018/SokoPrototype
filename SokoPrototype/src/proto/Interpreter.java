@@ -15,9 +15,9 @@ public class Interpreter {
 
 		switch (commands[0]) {
 		case "step":
-			if (commands[1].equals("p1")) {
+			if (commands[1].equals("p1")&& (players.size() >= 1)) {
 				commander = players.get(0);
-			} else if (commands[1].equals("p2") && (players.size() == 2)) {
+			} else if (commands[1].equals("p2") && (players.size() >= 2)) {
 				commander = players.get(1);
 			} else {
 				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
@@ -39,9 +39,9 @@ public class Interpreter {
 
 			break;
 		case "friction":
-			if (commands[1].equals("p1")) {
+			if (commands[1].equals("p1")&& (players.size() >= 1)) {
 				commander = players.get(0);
-			} else if (commands[1].equals("p2") && (players.size() == 2)) {
+			} else if (commands[1].equals("p2") && (players.size() >= 2)) {
 				commander = players.get(1);
 			} else {
 				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
@@ -60,20 +60,6 @@ public class Interpreter {
 			}
 
 			break;
-		case "check":
-			if(Integer.parseInt(commands[1])> map.length || Integer.parseInt(commands[2]) > map[0].length)
-			{
-				System.out.println("a megadott koordináta nincs a pályán");
-				break;
-			}
-			else
-			{
-				System.out.println(map[Integer.parseInt(commands[1])-1][Integer.parseInt(commands[2])-1].getFriction());
-				System.out.println(map[Integer.parseInt(commands[1])-1][Integer.parseInt(commands[2])-1].getThing());
-			}
-			
-				
-
 		}
 
 	}
