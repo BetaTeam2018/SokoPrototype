@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
+import proto.Interpreter;
 import proto.MapLoader;
 import proto.Matrix;
 import proto.Menu;
@@ -25,17 +26,31 @@ public class Game {
 	 * a pályán lévő játékosok listája
 	 */
 	private List<Player> players;
+<<<<<<< HEAD
 	/**
 	 * Scanner objektum amelynek segítségével a bementről olvasunk
 	 */
+=======
+>>>>>>> 036032eb9664c9b3852ecd25881b1d0dd51ed793
 	private Scanner sc = new Scanner(System.in);
 
 	/**
 	 * elindítja a játékot
 	 */
 	public void startGame() {
+<<<<<<< HEAD
 
 		this.gameMainLoop();
+=======
+		running = true;
+		
+		// A menü parancsai
+		
+		this.gameMainLoop();
+		
+		System.out.println("player pontjai: " + players.get(0).getPoints());
+		// System.out.println("player 2 pontjai: "+players.get(1).getPoints());
+>>>>>>> 036032eb9664c9b3852ecd25881b1d0dd51ed793
 
 	}
 
@@ -106,8 +121,13 @@ public class Game {
 				String command = sc.nextLine();					//következő parancs beolvasása
 				Matrix mat = new Matrix();
 
+<<<<<<< HEAD
 				commandInterpreter(command);					//parancs feldolgozása
 				mat.Draw(System.out, map);						//aktuális állapot kiírása
+=======
+				Interpreter.readCommand(command, players, map);
+				mat.Draw(System.out, map);
+>>>>>>> 036032eb9664c9b3852ecd25881b1d0dd51ed793
 
 				if (command.equals("exit"))						//kilépés ha szükséges
 					testExit = true;
@@ -118,6 +138,7 @@ public class Game {
 
 	}
 
+<<<<<<< HEAD
 	public void commandInterpreter(String command) { 					//parancs feldolgozó
 		String[] commands = command.split(" ");						//parancs feldarabolása
 		Player commander = new Player();
@@ -172,6 +193,17 @@ public class Game {
 		}
 
 	}
+=======
+	
+
+	/*public void commandreader() {
+		int i = 1;
+		while (i++ <= 3) {
+			commandInterpreter(sc.nextLine());
+		}
+
+	}*/
+>>>>>>> 036032eb9664c9b3852ecd25881b1d0dd51ed793
 
 	@Override
 	protected void finalize() {
