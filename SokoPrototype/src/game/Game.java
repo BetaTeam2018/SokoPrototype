@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
+import proto.Interpreter;
 import proto.MapLoader;
 import proto.Matrix;
 import proto.Menu;
@@ -92,7 +93,7 @@ public class Game {
 				String command = sc.nextLine();
 				Matrix mat = new Matrix();
 
-				commandInterpreter(command);
+				Interpreter.readCommand(command, players, map);
 				mat.Draw(System.out, map);
 
 				if (command.equals("exit"))
