@@ -19,7 +19,6 @@ public class Matrix {
 				}
 			}
 			p.println();
-			//if (i != map.length - 1)
 			
 		}		
 	}	

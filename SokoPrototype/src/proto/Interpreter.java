@@ -26,11 +26,11 @@ public class Interpreter {
 
 			if (commands[2].equals("RIGHT")) {
 				commander.step(Direction.RIGHT);
-			} else if (commands[1].equals("LEFT")) {
+			} else if (commands[2].equals("LEFT")) {
 				commander.step(Direction.LEFT);
-			} else if (commands[1].equals("DOWN")) {
+			} else if (commands[2].equals("DOWN")) {
 				commander.step(Direction.DOWN);
-			} else if (commands[1].equals("UP")) {
+			} else if (commands[2].equals("UP")) {
 				commander.step(Direction.UP);
 			} else {
 				System.out.println("Nem érvényes a szintaxis, próbálja újra!");
@@ -50,9 +50,9 @@ public class Interpreter {
 
 			if (commands[2].equals("OIL")) {
 				commander.changeFriction(Friction.OIL);
-			} else if (commands[1].equals("NORMAL")) {
+			} else if (commands[2].equals("NORMAL")) {
 				commander.changeFriction(Friction.NORMAL);
-			} else if (commands[1].equals("HONEY")) {
+			} else if (commands[2].equals("HONEY")) {
 				commander.changeFriction(Friction.HONEY);
 			} else {
 				System.out.println("Nem érvényes a szintaxis, próbálja újra!");

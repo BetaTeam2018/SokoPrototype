@@ -12,7 +12,6 @@ public class Player extends Thing {
 	private Game game;
 	private int points;
 	private int strength;
-	private int endurance = 4;
 		
 	public Player(Game g) {	
 		this.game = g;
@@ -59,7 +58,7 @@ public class Player extends Thing {
 	public int slideBy(Player pusher, Direction dir, int st) {	//akkor hívódik meg ha megpróbálják eltolni egy másik mezőre
 		int back = super.slideBy(pusher, dir, st);
 		
-		if(st-back > endurance) {
+		if(st-back > 0) {
 			this.die();
 			return st;
 		}

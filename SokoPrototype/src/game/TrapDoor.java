@@ -6,31 +6,41 @@
 */
 
 package game;
-
+/**
+ * csapóajtót reprezentál a játékban ami akkor nyílik ki, ha a hozzákötött Switchre ládát tolnak,
+ * ha nyitva van Holeként viselkedik, ha zárva Floorként
+ */
 public class TrapDoor extends Floor {
-	
+	/**
+	 * boolean ami megmonjda, hogy nyitva van-e a csapóajtó
+	 */
 	private boolean opened;
-	
+	/**
+	 * alapértelmezett konstruktor amely zárt állapotban inicializálja a csapóajtót
+	 */
 	public TrapDoor() {
 		opened = false;
 	}
-	
+		/**
+		 * Boxot állít a TrapDoorra
+		 * @param b a Box referenciája
+		 */
 	public void set(Box b) {
-		if(opened) {
+		if(opened) {			// ha nyitva van megöli a Boxot
 			b.die();
 		}else {
-			super.set(b);
+			super.set(b);		// ha nincs nyitva csak ráhelyezi a TrapDoorra
 		}
 	}
 	/**
-	 * Azt az interakci�t kezeli amikor egy j�t�kos a csap�ajt�ra ker�l. 
+	 * Playert állít a TrapDoorra 
 	 */
 	public void set(Player p) {
 		
-		if(opened) {								// Ha a csap�ajt� nyitott, akkor a j�t�kos meghal. 
+		if(opened) {								// Ha nyitva van megöli a  Playert 
 			p.die();
 		}else {
-			super.set(p);							// Ha nincs nyitva, akkor helyezze r� a mez�re. 
+			super.set(p);							// Ha nincs nyitva csak ráhelyezi a TrapDoorra 
 		}		
 	}
 	

@@ -56,11 +56,7 @@ public class Game {
 		players = ml.getPlayers();
 		map = ml.getFields();
 
-		try {
-			is.close();								//fájl bezárása
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 
 		Matrix mat = new Matrix();
 		for (Player p : players)					//játékosoknak a pálya átadása
@@ -73,9 +69,7 @@ public class Game {
 	/**
 	 * a játék befejezésekor végrehajtandó műveleteket végzi el
 	 */
-	public void endGame() {
-		sc.close();
-	}
+	public void endGame() {	}
 /**
  * main függvény, ahonnan a program indul, elindít egy játékot
  * @param args
@@ -85,7 +79,7 @@ public class Game {
 	}
 
 	/**
-	 * 
+	 * ebben a függvényben lehet kiválasztani a tesztesetet és lefuttatni azokat
 	 */
 	public void gameMainLoop() {
 
@@ -115,12 +109,14 @@ public class Game {
 
 			}
 		}
-		endGame();
 
 	}
 
 
 
+	/**
+	 * bezárja a Scannert ha nem került volna sor rá
+	 */
 	@Override
 	protected void finalize() {
 		sc.close();

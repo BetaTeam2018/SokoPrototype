@@ -54,14 +54,11 @@ public class Menu {
 
         try {
             System.out.print("Sorszám: ");
-         //   if (scanner.hasNextInt()) {
                 ret = scanner.nextInt();
                
-         //   }
             return ret;
         } finally {
             if (scanner != null);
-            //scanner.close();
         }
     }
 

@@ -46,6 +46,10 @@ public class Switch extends Floor {
 		return td;
 	}
 
+	/**
+	 * ráállítja a Boxot a Switchre és kinyitja a hozzákötött TrapDoort
+	 * 
+	 */
 	@Override
 	public void set(Box b) {
 		super.set(b);
