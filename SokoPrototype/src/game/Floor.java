@@ -6,6 +6,10 @@
 */
 
 package game;
+/**
+ * Egy általános padlóelemet reprezentál a játékban amelyre dolgokat lehet tolni, rátolás után
+ * semmi különleges nem történik
+ */
 public class Floor extends Field {
 	
 	/**

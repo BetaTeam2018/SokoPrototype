@@ -2,29 +2,21 @@ package proto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * a menü kirajzolásáért felelős osztály
+ *
+ */
 public class Menu {
 
+	/**
+	 * Scanner amivel a bementről olvasunk
+	 */
     static Scanner scanner = null;
    
-    private static void printTheSubtitle() {
-        System.out.println("========= Prototípus tesztelés by beta =========");
-        //System.out.println("Adja meg a tesztelni kívánt eset sorszámát!\n");
-    }
-    public static void printMainMenuList() {
-    	printTheSubtitle();
-    	System.out.println("===============================================");
-    	System.out.println("                    Főmenü                     ");
-    	System.out.println("===============================================");
-        ArrayList < String > mainMenuList = new ArrayList < > ();
-        mainMenuList.add(" *Kilépés*");
-        mainMenuList.add("Tesztek"); 
-        mainMenuList.add("Parancssor\n"); 
-        int i = 0;
-        for (String str: mainMenuList) {
-            System.out.println(i++ + ". " + str);
-        }
-    }
+    
+    /**
+     * kirajzolja a menüt 
+     */
     public static void printTestMenuList() {
         ArrayList < String > menuList = new ArrayList < > ();
       
@@ -47,19 +39,19 @@ public class Menu {
         }
     }
 
+    /**
+     * beolvassa hogy a felhasználó melyik menüpontot válaszotta
+     * @return a kiválaszott menüpont sorszáma
+     */
     public static Integer readListNumber() {
 
         Scanner scanner = new Scanner(System.in);
         Integer ret = 0;
 
-        try {
             System.out.print("Sorszám: ");
-                ret = scanner.nextInt();
+                ret = scanner.nextInt();	//menüpont számának beolvasása
                
             return ret;
-        } finally {
-            if (scanner != null);
-        }
     }
 
 }

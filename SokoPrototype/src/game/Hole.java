@@ -6,7 +6,10 @@
 */
 
 package game;
-
+/**
+ * egy lyukat reprezentál a játékban amelybe bele lehet esni, az esés megöli az adott Thinget
+ *
+ */
 public class Hole extends Floor {	
 	
 	

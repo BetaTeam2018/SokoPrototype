@@ -17,6 +17,7 @@ public class Box extends Thing {
 	 * @param pusher Player referenciája aki tolja
 	 * @param dir	irány amerre tolják
 	 * @param strength	még megmaradt erő
+	 * @return a tolás után megmarat erő
 	 */
 	@Override
 	public int slideBy(Player pusher, Direction dir, int strength) {
@@ -44,7 +45,8 @@ public class Box extends Thing {
 		super.die();
 	}
 	/**
-	 * ezzel írunk ki  a konzolra, ■ fog megjelenni
+	 * a kiíráshoz szükséghez karaktert adja vissza
+	 * @return a kiíráshoz szükséges karakter
 	 */
 	@Override
 	public String MatrixElement() {				//kirajzolás a konzolra

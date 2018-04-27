@@ -43,25 +43,38 @@ public class TrapDoor extends Floor {
 			super.set(p);							// Ha nincs nyitva csak ráhelyezi a TrapDoorra 
 		}		
 	}
-	
+	/**
+	 * kinyitja a TrapDoort
+	 */
 	public void open() {		
 		opened = true;
 		if(this.getThing() != null)
 			this.getThing().die();
 	}
-	
+	/**
+	 * bezárja a TrapDoort
+	 */
 	public void close() {		
 		opened = false;		
 	}
-	
+	/**
+	 * visszaadja, hogy a TrapDoor nyitva van-e
+	 * @return TrapDoor állapota
+	 */
 	public boolean getState() {
 		return opened;
 	}
-	
+	/**
+	 * beállítja a TrapDoor állapotát
+	 * @param opened az állapot amire akarjuk a TrapDoort állítani
+	 */
 	public void setState(boolean opened) {
 		this.opened = opened;
 	}
-	
+	/**
+	 * Konzolra kiíráshoz ad vissza kiírandó karaktert
+	 * @return kiírandó karakter
+	 */
 	@Override
 	public String MatrixElement() {		
 		return "t";

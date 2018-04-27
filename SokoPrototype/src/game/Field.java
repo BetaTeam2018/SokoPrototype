@@ -10,7 +10,7 @@ package game;
 import java.util.Map;
 import java.util.TreeMap;
 /**
- * Pályaelemeket reprezentál, különböző pályaelemeknek ad ősosztályt
+ *  Különböző pályaelemeknek ad ősosztályt
  *
  *
  */
@@ -30,7 +30,7 @@ public abstract class Field {
     private Friction friction = Friction.NORMAL;
     
     /**
-     * megvalósítandó konzolra kiíró fv a leszármazottaknak
+     * megvalósítandó fv a leszármazottaknak, a kiíráshoz szökséges karaktert adja vissza
      * @return visszaadja a kiíráshoz szükséges karaktert
      */
     public abstract String MatrixElement();
@@ -143,7 +143,7 @@ public abstract class Field {
         thing = null;
     }
     /**
-     * Dolog levétele a Fieldről
+     * Thing levétele a Fieldről
      */
     public void setThingToNull() {						
     	thing = null;
@@ -161,7 +161,7 @@ public abstract class Field {
     }
 
     /**
-     * Player levétele a mezőről
+     * Player levétele a Fieldről
      * @param p Player referenciája
      */
     public void remove(Player p) {	
