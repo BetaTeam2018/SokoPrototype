@@ -56,8 +56,6 @@ public class Game {
 		players = ml.getPlayers();
 		map = ml.getFields();
 
-		
-
 		Matrix mat = new Matrix();
 		for (Player p : players)					//játékosoknak a pálya átadása
 			p.setGame(this);

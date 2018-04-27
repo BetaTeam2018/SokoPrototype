@@ -31,7 +31,7 @@ public class Menu {
         menuList.add("A játékos ládát tol egy célhelyre, majd letolja róla a ládát"); // 4.
         menuList.add("A játékos ládát tol egy sima mezőre majd egy mézesre"); // 5.
         menuList.add("A játékos minden irányba lépked"); // 6.
-        menuList.add("A játékos lyukba esik\n"); // 7.
+       // menuList.add("A játékos lyukba esik\n"); // 7.
 
         int i = 0;
         for (String str: menuList) {
