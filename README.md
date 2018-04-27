@@ -239,4 +239,3 @@ step p1 up
 ..
 ```
 
-## 7. A játékos lyukba esik
