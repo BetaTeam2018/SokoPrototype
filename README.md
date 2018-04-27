@@ -50,19 +50,7 @@ p 3 2 | A p játékos (3;1) helyen van és 2 erővel ellátva | `(x;y) = (3;1)`
 b 4 | A b doboz (3;1) helyen van
 
 # Bemeneti nyelv 
-## A menü parancsai
-* `list`        
 
-	>Listázza a pályák neveit (maps könyvtár tartalma).
-	
-* `load <filename>` 
-
-	>Pálya betöltése és indítása a maps könyvtárban található neve alapján. pl: `maze1.txt`
-	
-* `exit` 
-
-	>Kilépés a programból
-	
 ## A játék parancsai
 * `step <player> <direction>`  
 	> A kiválasztott játékos a megadott irányba lép.  
@@ -81,9 +69,7 @@ b 4 | A b doboz (3;1) helyen van
 
 	>Visszalépés a menübe.
 	
-* `check <x,y>`  
 
-	>Az x,y koordinátán található field és thing attribútumainak listázása.
 # Kimeneti nyelv
 ## Mátrix 
 
@@ -122,10 +108,10 @@ step p1 right
 ### Elvárt kimenet
 
 ```
-w☺■.■.■.w  
-w.☺■■.■.w  
-w..☺■■■.w  
-w..☺■■■.w  
+w☺■.■.■w  
+w.☺■■.■w  
+w..☺■■■w  
+w..☺■■■w  
 ```
 
 
